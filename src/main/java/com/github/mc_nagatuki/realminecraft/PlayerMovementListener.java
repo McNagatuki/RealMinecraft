@@ -15,15 +15,15 @@ public class PlayerMovementListener implements Listener {
         if (!RealMinecraft.plugin.getRealConfig().isActivated()) return;
 
         // プレイヤーを取得
-        Player p = e.getPlayer();
+        Player player = e.getPlayer();
 
         // プレイヤーがクリエイティブかスペクテイターならなにもしない
-        if (p.getGameMode() == GameMode.CREATIVE || p.getGameMode() == GameMode.SPECTATOR) return;
+        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) return;
 
         // プレイヤーが浮いていたら何もしない
         // ただし乗り物に乗っている場合を除く
         // 厳密にやるならy座標を見た方がいいらしい
-        if (!(p.isOnGround() || p.isInsideVehicle())) return;
+        if (!(player.isOnGround() || player.isInsideVehicle())) return;
 
         //移動先の座標を得る
         Location loc = e.getTo();
@@ -34,7 +34,7 @@ public class PlayerMovementListener implements Listener {
         if (!RealMinecraft.plugin.getMineManager().hasMine(x, z)) return;
 
         // 爆発処理
-        RealMinecraft.plugin.getPlayerExploder().explode(loc, p, RealMinecraft.plugin.getRealConfig().getPower(), RealMinecraft.plugin.getRealConfig().getDamage());
+        RealMinecraft.plugin.getPlayerExploder().explode(loc, player, RealMinecraft.plugin.getRealConfig().getPower(), RealMinecraft.plugin.getRealConfig().getDamage());
 
         // 地雷除去（爆発しても地雷がなくならないようにするならここを変更）
         RealMinecraft.plugin.getMineManager().demine(x, z);
