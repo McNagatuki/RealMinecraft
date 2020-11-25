@@ -18,8 +18,8 @@ public final class RealMinecraft extends JavaPlugin {
         this.config = new RealConfiguration();
 
         // events
-        this.getServer().getPluginManager().registerEvents(new PlayerMovementListener(this), this);
-        this.getServer().getPluginManager().registerEvents(new PlayerClickListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new PlayerMovementListener(), this);
+        this.getServer().getPluginManager().registerEvents(new PlayerClickListener(), this);
 
         // commands
         this.getCommand("real").setExecutor(new CommandManager(this));
