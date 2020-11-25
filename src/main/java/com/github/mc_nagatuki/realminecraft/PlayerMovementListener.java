@@ -28,17 +28,16 @@ public class PlayerMovementListener implements Listener {
         //移動先の座標を得る
         Location loc = e.getTo();
         if(loc == null) return;
-        int x = loc.getBlockX();
-        int z = loc.getBlockZ();
+        BlockPosition pos = BlockPosition.fromLocation(loc);
 
         // 当該座標に地雷がなければ何もしない
-        if (!RealMinecraft.plugin.getMineManager().hasMine(x, z)) return;
+        if (!RealMinecraft.plugin.getMineManager().hasMine(pos)) return;
 
         // 爆発処理
         RealMinecraft.plugin.getPlayerExploder().explode(loc, player, RealMinecraft.plugin.getRealConfig().getPower(), RealMinecraft.plugin.getRealConfig().getDamage());
 
         // 地雷除去（爆発しても地雷がなくならないようにするならここを変更）
-        RealMinecraft.plugin.getMineManager().demine(x, z);
+        RealMinecraft.plugin.getMineManager().demine(pos);
 
         RealMinecraft.plugin.getServer().broadcastMessage(ChatColor.BLUE + e.getPlayer().getName() + "は地雷を踏み抜いた");
     }
