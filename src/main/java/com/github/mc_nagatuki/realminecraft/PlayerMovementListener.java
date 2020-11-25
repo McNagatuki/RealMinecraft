@@ -27,6 +27,7 @@ public class PlayerMovementListener implements Listener {
 
         //移動先の座標を得る
         Location loc = e.getTo();
+        if(loc == null) return;
         int x = loc.getBlockX();
         int z = loc.getBlockZ();
 
