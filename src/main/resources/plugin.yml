@@ -1,16 +1,16 @@
 name: RealMinecraft
 version: @version@
-main: com.github.mc_nagatuki.realminecraft.RealMinecraft
+main: com.github.mcnagatuki.realminecraft.RealMinecraft
 api-version: 1.15
-authors: [ McNagatuki ]
+authors: [ Nagatuki ]
 description: Aho Shine
 
 commands:
   real:
     description: enable or disable this plugin
-    usage: /<command> <on|off|set|save|help>
-    default: op
+    usage: /real <on|off|set|save|help>
+    permission: real
 
-  permissions:
-    Real:
-      default: op
+permissions:
+  real:
+    default: op
