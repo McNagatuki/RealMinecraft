@@ -7,48 +7,34 @@ import java.util.Random;
 // 爆弾の管理
 // NOTE: ワールド間で情報を分けていないので、オーバーワールドとネザーの同じ座標で爆発する
 public class MineManager{
-    private Set<String> mines;
-
-    // コンストラクタ
-    public MineManager(){
-        this.mines = new HashSet<>();
-    }
+    private final Set<BlockPosition> mines = new HashSet<>();
 
     // 自動設置
-    public void layAutomatically(int x1, int z1, int x2, int z2, double probability){
-        if(x1 > x2){
-            int temp = x1;
-            x1 = x2;
-            x2 = temp;
-        }
-
-        if(z1 > z2){
-            int temp = z1;
-            z1 = z2;
-            z2 = temp;
-        }
+    public void layAutomatically(BlockPosition pos1, BlockPosition pos2, double probability){
+        int x1 = Math.min(pos1.x, pos2.x);
+        int x2 = Math.max(pos1.x, pos2.x);
+        int z1 = Math.min(pos1.z, pos2.z);
+        int z2 = Math.max(pos1.z, pos2.z);
 
         Random rd = new Random();
         for(int x = x1; x <= x2; ++x){
             for(int z = z1; z <= z2; ++z){
                 double rdVal = rd.nextDouble();
                 if(rdVal < probability){
-                    lay(x, z);
+                    this.lay(new BlockPosition(x, z));
                 }
             }
         }
     }
 
     // 手動設置
-    public void lay(int x, int z){
-        String key = coordToString(x, z);
-        this.mines.add(key);
+    public void lay(BlockPosition pos){
+        this.mines.add(pos);
     }
 
     // 手動解除
-    public void demine(int x, int z){
-        String key = coordToString(x, z);
-        this.mines.remove(key);
+    public void demine(BlockPosition pos){
+        this.mines.remove(pos);
     }
 
     // 全解除
@@ -57,13 +43,7 @@ public class MineManager{
     }
 
     // 爆弾の有無
-    public boolean hasMine(int x, int z){
-        String key = this.coordToString(x, z);
-        return this.mines.contains(key);
-    }
-
-    // ブロック座標を文字列に
-    private String coordToString(int x, int z){
-        return "x" + x + "y" + z;
+    public boolean hasMine(BlockPosition pos){
+        return this.mines.contains(pos);
     }
 }
