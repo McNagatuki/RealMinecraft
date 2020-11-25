@@ -1,6 +1,8 @@
 package com.github.mc_nagatuki.realminecraft;
 
 import org.bukkit.Location;
+import org.bukkit.block.Block;
+
 import java.util.Objects;
 
 public class BlockPosition {
@@ -12,8 +14,12 @@ public class BlockPosition {
         this.z = y;
     }
 
-    public static BlockPosition fromLocation(Location location){
+    public static BlockPosition fromLocation(Location location) {
         return new BlockPosition(location.getBlockX(), location.getBlockZ());
+    }
+
+    public static BlockPosition fromBlock(Block block) {
+        return new BlockPosition(block.getX(), block.getZ());
     }
 
     // 「生成/equals()およびhasCode()」から比較を行うのに適当な関数群を生成する

@@ -13,12 +13,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class PlayerClickListener implements Listener {
-    private RealMinecraft plugin;
-
-    public PlayerClickListener(RealMinecraft plugin){
-        this.plugin = plugin;
-    }
-
     @EventHandler(ignoreCancelled = true)
     public void onItemClick(PlayerInteractEvent e){
         Player p = e.getPlayer();
@@ -32,14 +26,17 @@ public class PlayerClickListener implements Listener {
         ItemStack item = e.getItem();
         Material type = item.getType();
         ItemMeta im = item.getItemMeta();
+        if(im == null) return;
 
         Block block = e.getClickedBlock();
-        int x = block.getX();
-        int z = block.getZ();
+        if(block == null) return;
+        BlockPosition pos = BlockPosition.fromBlock(block);
+
+        MineManager manager = RealMinecraft.plugin.getMineManager();
 
         // Detector
         if(type == Items.Detector.material && im.getDisplayName().endsWith(Items.Detector.name)){
-            if(this.plugin.getMineManager().hasMine(x, z)){
+            if(manager.hasMine(pos)){
                 p.sendMessage(ChatColor.RED +  "地雷が埋まっています");
             } else{
                 p.sendMessage(ChatColor.GREEN +  "地雷は見つかりませんでした");
@@ -56,20 +53,18 @@ public class PlayerClickListener implements Listener {
                 item.setAmount(num);
             }
 
-            this.plugin.getMineManager().lay(x, z);
+            manager.lay(pos);
             p.sendMessage("地雷を設置しました");
         }
 
         // Sweeper
         if(type == Items.Sweeper.material && im.getDisplayName().endsWith(Items.Sweeper.name)){
-            if(this.plugin.getMineManager().hasMine(x, z)){
-                this.plugin.getMineManager().demine(x, z);
+            if(manager.hasMine(pos)){
+                manager.demine(pos);
             } else{
-                this.plugin.getMineManager().lay(x, z);
+                manager.lay(pos);
             }
             p.sendMessage("地雷を除去しました");
         }
-
-//       this.plugin.getServer().broadcastMessage("§9"+e.getPlayer().getName()+"は地雷を踏み抜いた");
     }
 }
