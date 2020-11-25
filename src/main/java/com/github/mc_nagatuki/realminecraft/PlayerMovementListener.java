@@ -34,7 +34,7 @@ public class PlayerMovementListener implements Listener {
         if (!RealMinecraft.plugin.getMineManager().hasMine(pos)) return;
 
         // 爆発処理
-        RealMinecraft.plugin.getPlayerExploder().explode(loc, player, RealMinecraft.plugin.getRealConfig().getPower(), RealMinecraft.plugin.getRealConfig().getDamage());
+        PlayerExploder.explode(loc, player, RealMinecraft.plugin.getRealConfig().getPower(), RealMinecraft.plugin.getRealConfig().getDamage());
 
         // 地雷除去（爆発しても地雷がなくならないようにするならここを変更）
         RealMinecraft.plugin.getMineManager().demine(pos);

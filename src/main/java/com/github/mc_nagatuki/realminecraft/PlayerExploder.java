@@ -1,10 +1,14 @@
 package com.github.mc_nagatuki.realminecraft;
 
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 public class PlayerExploder {
-    public void explode(Location l, Player p, int power, double damage){
-        l.getWorld().createExplosion(l, power, false, false);
+    public static void explode(Location l, Player p, int power, double damage){
+        World world = l.getWorld();
+        if(world == null) return;
+
+        world.createExplosion(l, power, false, false);
     }
 }
