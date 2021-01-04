@@ -6,14 +6,14 @@ public final class RealMinecraft extends JavaPlugin {
     public static RealMinecraft plugin;
 
     private MineManager mm;
-    private RealConfiguration config;
+    private MineConfiguration config;
 
     @Override
     public void onEnable() {
         this.plugin = this;
 
         this.mm = new MineManager();
-        this.config = new RealConfiguration();
+        this.config = new MineConfiguration();
 
         // events
         this.getServer().getPluginManager().registerEvents(new PlayerMovementListener(), this);
@@ -27,7 +27,7 @@ public final class RealMinecraft extends JavaPlugin {
         return this.mm;
     }
 
-    public RealConfiguration getRealConfig() {
+    public MineConfiguration getRealConfig() {
         return this.config;
     }
 }
