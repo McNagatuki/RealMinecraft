@@ -1,8 +1,9 @@
 package com.github.mc_nagatuki.realminecraft;
 
-public class RealConfiguration {
+public class MineConfiguration {
     private int power = 1;
-    private int x1 = 0, z1 = 0, x2 = 0, z2 = 0;
+    private BlockPosition pos1 = new BlockPosition(0, 0);
+    private BlockPosition pos2 = new BlockPosition(0, 0);
     private double damage = 5.0;
     private double probability = 0.3;
     private boolean activated = false;
@@ -39,30 +40,19 @@ public class RealConfiguration {
         return probability;
     }
 
-    // ここを別のクラスにした方がいいかもしれない
-    public void setPos1(int x, int z) {
-        this.x1 = x;
-        this.z1 = z;
+    public BlockPosition getPos1() {
+        return pos1;
     }
 
-    public int getX1() {
-        return this.x1;
+    public void setPos1(BlockPosition pos1) {
+        this.pos1 = pos1;
     }
 
-    public int getZ1() {
-        return this.z1;
+    public BlockPosition getPos2() {
+        return pos2;
     }
 
-    public void setPos2(int x, int z) {
-        this.x2 = x;
-        this.z2 = z;
-    }
-
-    public int getX2() {
-        return this.x2;
-    }
-
-    public int getZ2() {
-        return this.z2;
+    public void setPos2(BlockPosition pos2) {
+        this.pos2 = pos2;
     }
 }
