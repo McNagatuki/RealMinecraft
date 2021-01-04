@@ -8,7 +8,9 @@ description: Aho Shine
 commands:
   real:
     description: enable or disable this plugin
-    usage: /real <on|off|set|save|help>
+    usage: |-
+      /real <on|off|set|save|help>
+      /real autolay <x1> <z1> <x2> <z2>
     permission: real
 
 permissions:
