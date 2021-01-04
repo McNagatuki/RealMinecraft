@@ -9,9 +9,9 @@ public class BlockPosition {
     public final int x;
     public final int z;
 
-    public BlockPosition(int x, int y) {
+    public BlockPosition(int x, int z) {
         this.x = x;
-        this.z = y;
+        this.z = z;
     }
 
     public static BlockPosition fromLocation(Location location) {
@@ -20,6 +20,11 @@ public class BlockPosition {
 
     public static BlockPosition fromBlock(Block block) {
         return new BlockPosition(block.getX(), block.getZ());
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + z + ")";
     }
 
     // 「生成/equals()およびhasCode()」から比較を行うのに適当な関数群を生成する
