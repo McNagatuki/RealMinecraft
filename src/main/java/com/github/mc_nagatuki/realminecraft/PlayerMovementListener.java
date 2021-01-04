@@ -11,8 +11,10 @@ import org.bukkit.event.player.PlayerMoveEvent;
 public class PlayerMovementListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onPlayerMoveEvent(PlayerMoveEvent e) {
+        MineConfiguration config = RealMinecraft.plugin.getMineConfig();
+
         // プラグインがオフなら何もしない
-        if (!RealMinecraft.plugin.getRealConfig().isActivated()) return;
+        if (!config.isActivated()) return;
 
         // プレイヤーを取得
         Player player = e.getPlayer();
@@ -27,14 +29,14 @@ public class PlayerMovementListener implements Listener {
 
         //移動先の座標を得る
         Location loc = e.getTo();
-        if(loc == null) return;
+        if (loc == null) return;
         BlockPosition pos = BlockPosition.fromLocation(loc);
 
         // 当該座標に地雷がなければ何もしない
         if (!RealMinecraft.plugin.getMineManager().hasMine(pos)) return;
 
         // 爆発処理
-        PlayerExploder.explode(loc, player, RealMinecraft.plugin.getRealConfig().getPower(), RealMinecraft.plugin.getRealConfig().getDamage());
+        PlayerExploder.explode(loc, player, config.getPower(), config.getDamage());
 
         // 地雷除去（爆発しても地雷がなくならないようにするならここを変更）
         RealMinecraft.plugin.getMineManager().demine(pos);
