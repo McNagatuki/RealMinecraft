@@ -6,7 +6,6 @@ public final class RealMinecraft extends JavaPlugin {
     public static RealMinecraft plugin;
 
     private MineManager mm;
-    private PlayerExploder pe;
     private RealConfiguration config;
 
     @Override
@@ -14,7 +13,6 @@ public final class RealMinecraft extends JavaPlugin {
         this.plugin = this;
 
         this.mm = new MineManager();
-        this.pe = new PlayerExploder();
         this.config = new RealConfiguration();
 
         // events
@@ -27,10 +25,6 @@ public final class RealMinecraft extends JavaPlugin {
 
     public MineManager getMineManager() {
         return this.mm;
-    }
-
-    public PlayerExploder getPlayerExploder() {
-        return this.pe;
     }
 
     public RealConfiguration getRealConfig() {
