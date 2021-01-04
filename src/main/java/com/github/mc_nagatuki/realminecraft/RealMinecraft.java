@@ -27,7 +27,7 @@ public final class RealMinecraft extends JavaPlugin {
         return this.mm;
     }
 
-    public MineConfiguration getRealConfig() {
+    public MineConfiguration getMineConfig() {
         return this.config;
     }
 }
