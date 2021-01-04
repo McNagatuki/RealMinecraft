@@ -7,13 +7,13 @@ public class Items {
         public final Material material;
         public final String id;
         public final String name;
-        public final String colo;
+        public final String color;
 
-        public ItemType(Material material, String id, String name, String colo) {
+        public ItemType(Material material, String id, String name, String color) {
             this.material = material;
             this.id = id;
             this.name = name;
-            this.colo = colo;
+            this.color = color;
         }
     }
 
