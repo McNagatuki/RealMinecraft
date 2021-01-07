@@ -37,8 +37,6 @@ public class CommandArgsParser {
     // 座標の引数を解決してブロック座標の絶対値を取得するメソッド
     public static Optional<Integer> parsePosArgToBlockPos(String arg, double base) {
         if (arg.startsWith("~")) {
-            System.out.println(base);
-
             if (arg.length() == 1) {
                 return Optional.of(positionToBlockPosition(base));
             }

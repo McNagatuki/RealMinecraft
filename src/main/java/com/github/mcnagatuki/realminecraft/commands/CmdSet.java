@@ -74,16 +74,6 @@ public class CmdSet extends CommandAbstract {
             this.blockPosConsumer = blockPosConsumer;
         }
 
-//        private Optional<Integer> parsePosArg(String arg, int base) {
-//            try {
-//                return Optional.of(CommandArgsParser.positionToBlockPosition(
-//                        (CommandArgsParser.hasTilde(arg) ? base : 0) + Double.parseDouble(arg.substring(1))
-//                ));
-//            } catch (NumberFormatException ignored) {
-//            }
-//            return Optional.empty();
-//        }
-
         public boolean executeCommand(CommandSender sender, Command command, String label, String[] args) {
             if (args.length == 4 && args[1].equalsIgnoreCase(this.cmdStr)) {
                 Location loc = ((Player) sender).getLocation();
