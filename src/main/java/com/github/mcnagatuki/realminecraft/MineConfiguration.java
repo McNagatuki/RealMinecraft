@@ -1,4 +1,4 @@
-package com.github.mc_nagatuki.realminecraft;
+package com.github.mcnagatuki.realminecraft;
 
 public class MineConfiguration {
     private int power = 1;

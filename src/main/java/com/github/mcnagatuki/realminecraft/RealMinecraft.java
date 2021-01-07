@@ -1,4 +1,4 @@
-package com.github.mc_nagatuki.realminecraft;
+package com.github.mcnagatuki.realminecraft;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,7 +20,7 @@ public final class RealMinecraft extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new PlayerClickListener(), this);
 
         // commands
-        this.getCommand("real").setExecutor(new CommandManager(this));
+        this.getCommand("real").setExecutor(new CommandManager());
     }
 
     public MineManager getMineManager() {

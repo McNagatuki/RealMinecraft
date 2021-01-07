@@ -1,4 +1,4 @@
-package com.github.mc_nagatuki.realminecraft;
+package com.github.mcnagatuki.realminecraft;
 
 import java.util.HashSet;
 import java.util.Random;

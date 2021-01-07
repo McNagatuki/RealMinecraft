@@ -1,4 +1,4 @@
-package com.github.mc_nagatuki.realminecraft.commands;
+package com.github.mcnagatuki.realminecraft.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
